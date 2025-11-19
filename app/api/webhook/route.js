@@ -17,7 +17,7 @@ export async function GET(request) {
   const challenge = searchParams.get("hub.challenge");
 
   // あなたの verify token と合わせる
-  const VERIFY_TOKEN = "myverifytoken123";
+  const VERIFY_TOKEN = process.env.VERIFY_TOKEN || "myverifytoken123";
 
   if (mode === "subscribe" && token === VERIFY_TOKEN) {
     return new Response(challenge, { status: 200 });
